@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DependencyInjection<T> extends InheritedWidget {
-  DependencyInjection({
+class Provider<T> extends InheritedWidget {
+  Provider({
     this.components,
     @required child,
   }) : super(child: child);
@@ -14,8 +14,8 @@ class DependencyInjection<T> extends InheritedWidget {
   }
 
   static T of<T>(BuildContext context) {
-    final type = _typeOf<DependencyInjection<T>>();
-    DependencyInjection<T> provider = context.ancestorWidgetOfExactType(type);
+    final type = _typeOf<Provider<T>>();
+    Provider<T> provider = context.ancestorWidgetOfExactType(type);
     return provider.components;
   }
 

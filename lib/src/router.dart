@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutton/src/home/home.dart';
+import 'package:flutton/src/view/home/widget.dart';
 
 class Router extends StatelessWidget {
   @override
