@@ -14,17 +14,11 @@ class HomeScreen extends StatelessWidget {
         builder: (BuildContext context, HomeBloc bloc) => StreamInitializer(
               onInitState: () => bloc.fetchFavoriteStories.add(Null),
               builder: StreamBuilder(
-                  stream: bloc.favoriteStories,
-                  builder: (context, snapshot) {
-                    print(snapshot.data);
-                    return (snapshot.hasData)
-                        ? Center(
-                            child: Text('test ${snapshot.data[0]}'),
-                          )
-                        : Center(
-                            child: CircularProgressIndicator(),
-                          );
-                  }),
+                stream: bloc.favoriteStories,
+                builder: (context, snapshot) => (snapshot.hasData)
+                    ? Center(child: Text('test ${snapshot.data[0]}'))
+                    : Center(child: CircularProgressIndicator()),
+              ),
             ),
       ),
     );

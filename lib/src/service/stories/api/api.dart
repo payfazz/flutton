@@ -7,7 +7,6 @@ class StoriesAPI {
   Future<List<int>> getBestStories() async {
     final result =
         await dio.get('v0/beststories.json', data: {'print': 'pretty'});
-    print(result);
-    return [1, 2, 3];
+    return List<int>.from(result.data);
   }
 }

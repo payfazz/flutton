@@ -5,6 +5,6 @@ class StoriesService {
   StoriesService({@required this.api});
   final StoriesAPI api;
   Future<List<int>> getBestStories() async {
-    return [5];
+    return api.getBestStories();
   }
 }
