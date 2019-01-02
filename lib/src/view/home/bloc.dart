@@ -10,8 +10,13 @@ class HomeBloc extends BlocBase {
 
   final BehaviorSubject<void> _controller = BehaviorSubject<void>();
   StreamSink<void> get fetchFavoriteStories => _controller.sink;
-  Observable<List<int>> get favoriteStories => _controller.stream
-      .flatMap((_) => Observable.fromFuture(this._service.getBestStories()));
+  Observable<List<int>> get favoriteStories => _controller.stream.flatMap((_) {
+        _service
+            .getBestStories()
+            .then(print, onError: (err, stack) => print(err));
+
+        return Observable.just([1, 2, 3]);
+      }).doOnError((err) => print(err));
 
   @override
   void dispose() {

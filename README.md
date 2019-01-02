@@ -26,7 +26,7 @@ Type of screen:
 
 - Load from initiate
 - action button full block
-- full bloc (ga perlu ada helper)
+- full bloc (no need helper)
 
 multi stage navigation
 
