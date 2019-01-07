@@ -1,0 +1,4 @@
+enum FluttonBulodType {
+  BASIC,
+  MODAL,
+}

@@ -4,6 +4,7 @@ import 'package:flutton/flutton/stream_initializer.dart';
 import 'package:flutton/src/view/home/bloc.dart';
 
 class HomeScreen extends StatelessWidget {
+  BuildContext context;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
