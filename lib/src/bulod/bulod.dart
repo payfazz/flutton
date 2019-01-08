@@ -44,6 +44,17 @@ class FluttonBulod extends StatefulWidget {
 
 class _FluttonBulodState extends State<FluttonBulod> {
   ///
+  /// _activeModal
+  /// is a property for flagging, to know if the modal
+  /// already dismiss from screen. It will be using
+  /// at callback when modal dismissed
+  ///
+  bool _activeModal;
+  _FluttonBulodState() {
+    _activeModal = false;
+  }
+
+  ///
   /// didUpdateWidget
   /// is the lifecycle who called, when the props or state
   /// updated. In this part, we will check if the previous
@@ -55,7 +66,8 @@ class _FluttonBulodState extends State<FluttonBulod> {
   void didUpdateWidget(FluttonBulod oldWidget) {
     if (oldWidget.loading != widget.loading &&
         widget.loading == false &&
-        widget.type == FluttonBulodType.MODAL) {
+        widget.type == FluttonBulodType.MODAL &&
+        _activeModal == true) {
       Future.delayed(
         Duration(milliseconds: 500),
         () => Navigator.of(context).pop(),
@@ -69,10 +81,16 @@ class _FluttonBulodState extends State<FluttonBulod> {
   /// _showLoadingModal
   ///
   void _showLoadingModal(BuildContext context) {
+    _activeModal = true;
     showDialog(
       context: context,
-      builder: (BuildContext ctx) =>
-          FluttonLoadingModal(content: widget.contentLoading),
+      barrierDismissible: false,
+      builder: (BuildContext ctx) => FluttonLoadingModal(
+            content: widget.contentLoading,
+            onDismiss: () {
+              _activeModal = false;
+            },
+          ),
     );
   }
 
