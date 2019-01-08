@@ -9,10 +9,12 @@ class BulodScreen extends StatefulWidget {
 
 class _BulodScreenState extends State<BulodScreen> {
   bool loading;
+  bool loading2;
 
   @override
   void initState() {
     loading = false;
+    loading2 = false;
     super.initState();
   }
 
@@ -27,6 +29,17 @@ class _BulodScreenState extends State<BulodScreen> {
     });
   }
 
+  void updateLoading2() {
+    setState(() {
+      loading2 = !loading2;
+    });
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        loading2 = !loading2;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,19 +50,23 @@ class _BulodScreenState extends State<BulodScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          FluttonBulod(
-            loading: loading,
-            color: Colors.red,
-            child: Text('Coba'),
-            onPressed: updateLoading,
-            contentLoading: Text('loading ya'),
+          Center(
+            child: FluttonBulod(
+              loading: loading,
+              color: Colors.red,
+              child: Text('Coba'),
+              onPressed: updateLoading,
+              contentLoading: Text('loading ya'),
+            ),
           ),
-          FluttonBulod(
-            loading: loading,
-            color: Colors.red,
-            child: Text('Coba'),
-            onPressed: updateLoading,
-            type: FluttonBulodType.MODAL,
+          Center(
+            child: FluttonBulod(
+              loading: loading2,
+              color: Colors.red,
+              child: Text('Coba'),
+              onPressed: updateLoading2,
+              type: FluttonBulodType.MODAL,
+            ),
           ),
         ],
       ),
