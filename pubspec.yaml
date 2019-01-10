@@ -14,6 +14,8 @@ dependencies:
   rxdart: ^0.20.0
   kiwi: ^0.1.0
   shimmer: ^0.0.6
+  fluro: "^1.4.0"
+
 
 
 dev_dependencies:
